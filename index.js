@@ -87,22 +87,20 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-// Function to calculate financial analysis and display results in HTML
 function calculateFinancialAnalysisAndDisplay(finances) {
-  // Initialize variables for analysis
   let totalMonths = finances.length;
   let netTotal = 0;
   let totalChange = 0;
   let greatestIncrease = { date: '', amount: 0 };
   let greatestDecrease = { date: '', amount: 0 };
 
-  // Loop through the dataset to perform calculations
+  // Loop through dataset to perform calculations
   for (let i = 0; i < finances.length; i++) {
     const currentDate = finances[i][0];
     const currentAmount = finances[i][1];
     netTotal += currentAmount;
 
-    // Calculate change in Profit/Losses (skip for the first month)
+    // Calculating change in Profit/Losses (skip for the first month)
     if (i > 0) {
       const change = currentAmount - finances[i - 1][1];
       totalChange += change;
@@ -119,13 +117,14 @@ function calculateFinancialAnalysisAndDisplay(finances) {
     }
   }
 
-  // Calculate average change
+  // Calculating average change
   const averageChange = totalChange / (totalMonths - 1);
 
   // Display results in HTML
   const resultContainer = document.createElement('div');
   resultContainer.innerHTML = `
     <h2>Financial Analysis</h2>
+    <hr style="width: 200px; border-top: 1px dashed #000; margin-bottom: 15px; margin-left:0;">
     <p>Total Months: ${totalMonths}</p>
     <p>Total: $${netTotal}</p>
     <p>Average Change: $${averageChange.toFixed(2)}</p>
